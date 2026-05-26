@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🔥 Ultimate AI Recommendation System</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#6d28d9);
+overflow:auto;
+}
+
+.container{
+
+width:95%;
+max-width:900px;
+padding:35px;
+border-radius:30px;
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(15px);
+box-shadow:0 0 40px rgba(0,255,255,0.4);
+text-align:center;
+animation:fadeIn 1s ease;
+
+}
+
+h1{
+
+font-size:3.5rem;
+color:#00ffff;
+margin-bottom:15px;
+text-shadow:0 0 25px #00ffff;
+
+}
+
+.subtitle{
+
+font-size:1.2rem;
+color:white;
+margin-bottom:30px;
+
+}
+
+select{
+
+width:100%;
+padding:18px;
+font-size:1rem;
+border:none;
+border-radius:15px;
+margin-bottom:25px;
+outline:none;
+background:white;
+
+}
+
+button{
+
+padding:18px 45px;
+font-size:1rem;
+font-weight:bold;
+border:none;
+border-radius:15px;
+background:#00ffff;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 20px #00ffff;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+background:white;
+
+}
+
+.result{
+
+margin-top:35px;
+display:none;
+animation:fadeIn 1s ease;
+
+}
+
+.result h2{
+
+color:white;
+margin-bottom:25px;
+font-size:2rem;
+
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+
+}
+
+.card{
+
+padding:25px;
+border-radius:20px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+color:white;
+font-size:1.1rem;
+font-weight:bold;
+transition:0.4s;
+box-shadow:0 0 20px rgba(255,255,255,0.1);
+
+}
+
+.card:hover{
+
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 0 30px #00ffff;
+
+}
+
+.footer{
+
+margin-top:35px;
+color:white;
+opacity:0.8;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎯 AI Recommendation System</h1>
+
+<p class="subtitle">
+
+Discover personalized recommendations powered by AI ✨
+
+</p>
+
+<select id="category">
+
+<option value="">🔍 Choose Your Interest</option>
+
+<option value="movies">🎬 Movies</option>
+
+<option value="books">📚 Books</option>
+
+<option value="music">🎵 Music</option>
+
+<option value="games">🎮 Games</option>
+
+<option value="technology">💻 Technology</option>
+
+<option value="food">🍕 Food</option>
+
+<option value="travel">✈️ Travel</option>
+
+<option value="fitness">🏋️ Fitness</option>
+
+<option value="anime">🔥 Anime</option>
+
+<option value="fashion">👗 Fashion</option>
+
+<option value="sports">⚽ Sports</option>
+
+<option value="cars">🚗 Cars</option>
+
+<option value="mobile">📱 Smartphones</option>
+
+<option value="coding">👨‍💻 Coding</option>
+
+<option value="ai">🤖 Artificial Intelligence</option>
+
+<option value="photography">📸 Photography</option>
+
+<option value="youtube">🎥 YouTube Channels</option>
+
+<option value="business">💰 Business Ideas</option>
+
+<option value="study">📖 Study Tips</option>
+
+<option value="startup">🚀 Startups</option>
+
+</select>
+
+<button onclick="recommendItems()">
+
+🚀 Generate Recommendations
+
+</button>
+
+<div class="result" id="result"></div>
+
+<div class="footer">
+
+✨ Smart AI Recommendation Engine • Designed By Thanika
+
+</div>
+
+</div>
+
+<script>
+
+function recommendItems(){
+
+const category =
+document.getElementById("category").value;
+
+const result =
+document.getElementById("result");
+
+result.style.display = "block";
+
+let recommendations = [];
+
+if(category === "movies"){
+
+recommendations = [
+
+"🎬 Interstellar",
+"🎬 Avengers Endgame",
+"🎬 Inception",
+"🎬 John Wick"
+
+];
+
+}
+
+else if(category === "books"){
+
+recommendations = [
+
+"📚 Atomic Habits",
+"📚 Rich Dad Poor Dad",
+"📚 Ikigai",
+"📚 Deep Work"
+
+];
+
+}
+
+else if(category === "music"){
+
+recommendations = [
+
+"🎵 Believer",
+"🎵 Faded",
+"🎵 Shape Of You",
+"🎵 Blinding Lights"
+
+];
+
+}
+
+else if(category === "games"){
+
+recommendations = [
+
+"🎮 GTA V",
+"🎮 Minecraft",
+"🎮 Valorant",
+"🎮 PUBG"
+
+];
+
+}
+
+else if(category === "technology"){
+
+recommendations = [
+
+"💻 Artificial Intelligence",
+"💻 Cyber Security",
+"💻 Cloud Computing",
+"💻 Web Development"
+
+];
+
+}
+
+else if(category === "food"){
+
+recommendations = [
+
+"🍕 Pizza",
+"🍔 Burger",
+"🍜 Noodles",
+"🍟 French Fries"
+
+];
+
+}
+
+else if(category === "travel"){
+
+recommendations = [
+
+"✈️ Maldives",
+"✈️ Switzerland",
+"✈️ Bali",
+"✈️ Dubai"
+
+];
+
+}
+
+else if(category === "fitness"){
+
+recommendations = [
+
+"🏋️ Gym Workout",
+"🏋️ Yoga",
+"🏋️ Running",
+"🏋️ Strength Training"
+
+];
+
+}
+
+else if(category === "anime"){
+
+recommendations = [
+
+"🔥 Naruto",
+"🔥 Demon Slayer",
+"🔥 One Piece",
+"🔥 Attack On Titan"
+
+];
+
+}
+
+else if(category === "fashion"){
+
+recommendations = [
+
+"👗 Streetwear Style",
+"👟 Sneakers Fashion",
+"🧥 Oversized Hoodies",
+"🕶️ Minimal Aesthetic"
+
+];
+
+}
+
+else if(category === "sports"){
+
+recommendations = [
+
+"⚽ Football",
+"🏏 Cricket",
+"🏀 Basketball",
+"🎾 Tennis"
+
+];
+
+}
+
+else if(category === "cars"){
+
+recommendations = [
+
+"🚗 BMW M4",
+"🚗 Audi R8",
+"🚗 Tesla Model S",
+"🚗 Lamborghini Huracan"
+
+];
+
+}
+
+else if(category === "mobile"){
+
+recommendations = [
+
+"📱 iPhone 16",
+"📱 Samsung S25",
+"📱 OnePlus 13",
+"📱 Google Pixel"
+
+];
+
+}
+
+else if(category === "coding"){
+
+recommendations = [
+
+"👨‍💻 JavaScript",
+"👨‍💻 Python",
+"👨‍💻 React JS",
+"👨‍💻 Node JS"
+
+];
+
+}
+
+else if(category === "ai"){
+
+recommendations = [
+
+"🤖 Machine Learning",
+"🤖 Deep Learning",
+"🤖 Generative AI",
+"🤖 Computer Vision"
+
+];
+
+}
+
+else if(category === "photography"){
+
+recommendations = [
+
+"📸 Portrait Photography",
+"📸 Street Photography",
+"📸 Wildlife Photography",
+"📸 Drone Photography"
+
+];
+
+}
+
+else if(category === "youtube"){
+
+recommendations = [
+
+"🎥 MrBeast",
+"🎥 Marques Brownlee",
+"🎥 CarryMinati",
+"🎥 Tech Burner"
+
+];
+
+}
+
+else if(category === "business"){
+
+recommendations = [
+
+"💰 Dropshipping",
+"💰 Digital Marketing",
+"💰 Freelancing",
+"💰 E-Commerce"
+
+];
+
+}
+
+else if(category === "study"){
+
+recommendations = [
+
+"📖 Pomodoro Technique",
+"📖 Active Recall",
+"📖 Smart Notes",
+"📖 Time Blocking"
+
+];
+
+}
+
+else if(category === "startup"){
+
+recommendations = [
+
+"🚀 AI Startup",
+"🚀 SaaS Platform",
+"🚀 EdTech App",
+"🚀 FinTech Business"
+
+];
+
+}
+
+else{
+
+result.innerHTML =
+"<div class='card'>⚠️ Please select a category first!</div>";
+
+return;
+
+}
+
+let output =
+"<h2>✨ Recommended For You</h2>";
+
+output += "<div class='cards'>";
+
+recommendations.forEach(function(item){
+
+output +=
+"<div class='card'>" + item + "</div>";
+
+});
+
+output += "</div>";
+
+result.innerHTML = output;
+
+}
+
+</script>
+
+</body>
+
+</html>
