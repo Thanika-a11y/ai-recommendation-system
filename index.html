@@ -23,7 +23,7 @@ font-family:Poppins,sans-serif;
 body{
 
 background:
-linear-gradient(135deg,#0f172a,#1e1b4b,#312e81);
+linear-gradient(135deg,#141e30,#243b55,#141e30);
 
 min-height:100vh;
 
@@ -282,6 +282,8 @@ Choose category and discover amazing recommendations ✨
 
 <option value="travel">✈️ Travel</option>
 
+<option value="fitness">🏋️ Fitness</option>
+
 </select>
 
 <button onclick="showRecommendations()">
@@ -330,7 +332,7 @@ genre:"Sci-Fi",
 
 year:"2014",
 
-director:"Christopher Nolan",
+creator:"Christopher Nolan",
 
 time:"2h 49m",
 
@@ -352,7 +354,7 @@ genre:"Action",
 
 year:"2019",
 
-director:"Marvel Studios",
+creator:"Marvel Studios",
 
 time:"3h 2m",
 
@@ -382,7 +384,7 @@ genre:"Adventure",
 
 year:"2002",
 
-director:"Masashi Kishimoto",
+creator:"Masashi Kishimoto",
 
 time:"720 Episodes",
 
@@ -404,7 +406,7 @@ genre:"Action",
 
 year:"2019",
 
-director:"Ufotable",
+creator:"Ufotable",
 
 time:"44 Episodes",
 
@@ -434,7 +436,7 @@ genre:"Open World",
 
 year:"2013",
 
-director:"Rockstar Games",
+creator:"Rockstar Games",
 
 time:"100+ Hours",
 
@@ -456,7 +458,7 @@ genre:"Sandbox",
 
 year:"2011",
 
-director:"Mojang",
+creator:"Mojang",
 
 time:"Unlimited",
 
@@ -486,7 +488,7 @@ genre:"Rock",
 
 year:"2017",
 
-director:"Imagine Dragons",
+creator:"Imagine Dragons",
 
 time:"3m 24s",
 
@@ -508,7 +510,7 @@ genre:"EDM",
 
 year:"2015",
 
-director:"Alan Walker",
+creator:"Alan Walker",
 
 time:"3m 32s",
 
@@ -538,7 +540,7 @@ genre:"Supercar",
 
 year:"2025",
 
-director:"Lamborghini",
+creator:"Lamborghini",
 
 time:"350 km/h",
 
@@ -560,13 +562,221 @@ genre:"Electric",
 
 year:"2025",
 
-director:"Tesla",
+creator:"Tesla",
 
 time:"AI Assisted",
 
 desc:"Future electric smart car.",
 
 review:"Modern technology and comfort."
+
+}
+
+];
+
+}
+
+else if(category === "food"){
+
+data = [
+
+{
+
+title:"Pizza",
+
+image:"https://images.unsplash.com/photo-1513104890138-7c749659a591",
+
+rating:"⭐⭐⭐⭐⭐ 9.6",
+
+genre:"Fast Food",
+
+year:"2025",
+
+creator:"Italian Cuisine",
+
+time:"30 Minutes",
+
+desc:"Cheesy delicious pizza loved worldwide.",
+
+review:"One of the most popular foods."
+
+},
+
+{
+
+title:"Burger",
+
+image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+
+rating:"⭐⭐⭐⭐⭐ 9.3",
+
+genre:"Snacks",
+
+year:"2025",
+
+creator:"American Cuisine",
+
+time:"20 Minutes",
+
+desc:"Juicy burger with crispy fries.",
+
+review:"Perfect comfort food."
+
+}
+
+];
+
+}
+
+else if(category === "technology"){
+
+data = [
+
+{
+
+title:"Artificial Intelligence",
+
+image:"https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
+
+rating:"⭐⭐⭐⭐⭐ 9.9",
+
+genre:"AI",
+
+year:"2025",
+
+creator:"Future Tech",
+
+time:"Infinite Growth",
+
+desc:"Future-changing AI technology.",
+
+review:"Revolutionizing industries worldwide."
+
+},
+
+{
+
+title:"Cyber Security",
+
+image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+
+rating:"⭐⭐⭐⭐⭐ 9.4",
+
+genre:"Security",
+
+year:"2025",
+
+creator:"Cyber Experts",
+
+time:"24/7",
+
+desc:"Protecting systems and data.",
+
+review:"Critical for digital safety."
+
+}
+
+];
+
+}
+
+else if(category === "travel"){
+
+data = [
+
+{
+
+title:"Maldives",
+
+image:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+
+rating:"⭐⭐⭐⭐⭐ 9.8",
+
+genre:"Beach",
+
+year:"2025",
+
+creator:"Nature",
+
+time:"Vacation",
+
+desc:"Beautiful tropical paradise.",
+
+review:"Crystal-clear water and luxury resorts."
+
+},
+
+{
+
+title:"Switzerland",
+
+image:"https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+
+rating:"⭐⭐⭐⭐⭐ 9.7",
+
+genre:"Mountains",
+
+year:"2025",
+
+creator:"Europe",
+
+time:"Holiday",
+
+desc:"Snow mountains and scenic beauty.",
+
+review:"Perfect peaceful destination."
+
+}
+
+];
+
+}
+
+else if(category === "fitness"){
+
+data = [
+
+{
+
+title:"Gym Workout",
+
+image:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+
+rating:"⭐⭐⭐⭐⭐ 9.7",
+
+genre:"Fitness",
+
+year:"2025",
+
+creator:"AI Fitness",
+
+time:"1 Hour",
+
+desc:"Best workout routine for full body strength.",
+
+review:"Highly recommended by fitness trainers."
+
+},
+
+{
+
+title:"Yoga Training",
+
+image:"https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+
+rating:"⭐⭐⭐⭐⭐ 9.4",
+
+genre:"Wellness",
+
+year:"2025",
+
+creator:"Yoga Master",
+
+time:"45 Minutes",
+
+desc:"Relaxing yoga exercises for mental peace.",
+
+review:"Improves flexibility and concentration."
 
 }
 
@@ -608,9 +818,9 @@ ${item.rating}
 
 <p>🎭 Genre: ${item.genre}</p>
 
-<p>📅 Release: ${item.year}</p>
+<p>📅 Release Year: ${item.year}</p>
 
-<p>🎬 Creator: ${item.director}</p>
+<p>🎬 Creator: ${item.creator}</p>
 
 <p>⏱ Duration: ${item.time}</p>
 
