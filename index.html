@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🔥 Premium AI Recommendation System</title>
+<title>🔥 Ultimate AI Recommendation System</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -23,16 +23,26 @@ font-family:'Poppins',sans-serif;
 body{
 
 min-height:100vh;
+
 background:
-linear-gradient(135deg,#0f172a,#1e1b4b,#312e81,#0f172a);
+linear-gradient(
+135deg,
+#0f172a,
+#1e1b4b,
+#312e81,
+#0f172a
+);
 
 background-size:400% 400%;
+
 animation:bgMove 12s infinite alternate;
 
 display:flex;
 justify-content:center;
 align-items:center;
+
 padding:20px;
+
 overflow:auto;
 
 }
@@ -52,7 +62,7 @@ background-position:right;
 .container{
 
 width:95%;
-max-width:1100px;
+max-width:1200px;
 
 background:rgba(255,255,255,0.08);
 
@@ -91,7 +101,9 @@ transform:translateY(0);
 h1{
 
 font-size:4rem;
+
 color:#00ffff;
+
 margin-bottom:10px;
 
 text-shadow:0 0 20px #00ffff;
@@ -101,7 +113,9 @@ text-shadow:0 0 20px #00ffff;
 .subtitle{
 
 color:white;
+
 font-size:1.2rem;
+
 margin-bottom:30px;
 
 }
@@ -109,8 +123,11 @@ margin-bottom:30px;
 .search-box{
 
 display:flex;
+
 gap:15px;
+
 margin-bottom:30px;
+
 flex-wrap:wrap;
 
 }
@@ -133,7 +150,7 @@ outline:none;
 
 button{
 
-padding:18px 40px;
+padding:18px 35px;
 
 border:none;
 
@@ -166,7 +183,7 @@ background:white;
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
+repeat(auto-fit,minmax(320px,1fr));
 
 gap:25px;
 
@@ -201,14 +218,15 @@ box-shadow:0 0 30px #00ffff;
 .card img{
 
 width:100%;
-height:220px;
+height:230px;
 object-fit:cover;
 
 }
 
 .card-content{
 
-padding:20px;
+padding:22px;
+
 color:white;
 
 }
@@ -216,58 +234,68 @@ color:white;
 .card h2{
 
 margin-bottom:10px;
-font-size:1.5rem;
+
+font-size:1.6rem;
 
 }
 
 .rating{
 
 margin:10px 0;
+
 color:gold;
+
+font-size:1.1rem;
 
 }
 
 .card p{
 
-font-size:0.95rem;
-opacity:0.85;
-line-height:1.5;
+font-size:0.96rem;
+
+opacity:0.88;
+
+line-height:1.6;
+
+}
+
+.details{
+
+margin-top:18px;
+
+text-align:left;
+
+background:rgba(255,255,255,0.08);
+
+padding:15px;
+
+border-radius:15px;
+
+line-height:1.9;
+
+font-size:0.94rem;
 
 }
 
 .card-buttons{
 
-margin-top:18px;
+margin-top:20px;
+
 display:flex;
+
 justify-content:center;
+
 gap:10px;
+
+flex-wrap:wrap;
 
 }
 
 .card-buttons button{
 
 padding:10px 18px;
+
 font-size:0.9rem;
-
-}
-
-.trending{
-
-margin-top:40px;
-
-color:white;
-
-font-size:1.1rem;
-
-animation:blink 2s infinite;
-
-}
-
-@keyframes blink{
-
-50%{
-opacity:0.5;
-}
 
 }
 
@@ -337,17 +365,11 @@ placeholder="Enter your name...">
 
 </div>
 
-<div class="trending">
-
-🔥 Trending AI Suggestions Updated Live
-
-</div>
-
 <div class="result" id="result"></div>
 
 <div class="footer">
 
-✨ Premium AI Recommendation System • Developed By Thanika
+✨ Ultimate AI Recommendation System • Developed By Thanika
 
 </div>
 
@@ -560,6 +582,38 @@ desc:"Snow mountains and peaceful scenery."
 
 }
 
+else if(category === "technology"){
+
+data = [
+
+{
+
+title:"Artificial Intelligence",
+
+image:"https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
+
+rating:"⭐⭐⭐⭐⭐ 9.9",
+
+desc:"Future-changing AI technology revolutionizing industries."
+
+},
+
+{
+
+title:"Cyber Security",
+
+image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
+
+rating:"⭐⭐⭐⭐⭐ 9.4",
+
+desc:"Protecting systems and digital information worldwide."
+
+}
+
+];
+
+}
+
 else{
 
 result.innerHTML =
@@ -604,14 +658,52 @@ ${item.rating}
 ${item.desc}
 </p>
 
+<div class="details">
+
+<p>🎯 Category: ${category}</p>
+
+<p>🔥 Popularity: Trending Worldwide</p>
+
+<p>⭐ AI Match Score: 98%</p>
+
+<p>👥 Recommended For: ${username}</p>
+
+<p>📅 Release Year: 2025 Edition</p>
+
+<p>🌍 Availability: Global</p>
+
+<p>💡 AI Insight:
+Highly personalized recommendation based on your selected interests and AI trend analysis.</p>
+
+<p>🚀 Why Recommended?
+Users with similar interests loved this recommendation.</p>
+
+</div>
+
 <div class="card-buttons">
 
-<button>
+<button onclick="
+alert('Opening ${item.title} details...')
+">
+
 ⭐ Explore
+
 </button>
 
-<button>
+<button onclick="
+alert('${item.title} added to favorites ❤️')
+">
+
 ❤️ Save
+
+</button>
+
+<button onclick="
+alert('Sharing ${item.title}...')
+">
+
+📤 Share
+
 </button>
 
 </div>
