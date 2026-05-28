@@ -1,881 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>🔥 Ultimate AI Recommendation System</title>
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins,sans-serif;
-}
-
-body{
-
-background:
-linear-gradient(135deg,#141e30,#243b55,#141e30);
-
-min-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:30px;
-
-}
-
-.container{
-
-width:95%;
-max-width:1300px;
-
-background:rgba(255,255,255,0.08);
-
-backdrop-filter:blur(15px);
-
-padding:35px;
-
-border-radius:30px;
-
-box-shadow:0 0 40px cyan;
-
-text-align:center;
-
-}
-
-h1{
-
-font-size:4rem;
-color:#00ffff;
-
-text-shadow:0 0 20px cyan;
-
-margin-bottom:15px;
-
-}
-
-.subtitle{
-
-color:white;
-font-size:1.2rem;
-
-margin-bottom:30px;
-
-}
-
-.top{
-
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-
-margin-bottom:30px;
-
-}
-
-select{
-
-flex:1;
-
-padding:18px;
-
-font-size:1rem;
-
-border:none;
-
-border-radius:15px;
-
-outline:none;
-
-}
-
-button{
-
-padding:18px 40px;
-
-border:none;
-
-border-radius:15px;
-
-background:#00ffff;
-
-font-size:1rem;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:0.3s;
-
-box-shadow:0 0 20px cyan;
-
-}
-
-button:hover{
-
-transform:scale(1.05);
-
-background:white;
-
-}
-
-.result{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(320px,1fr));
-
-gap:25px;
-
-margin-top:40px;
-
-}
-
-.card{
-
-background:rgba(255,255,255,0.1);
-
-border-radius:25px;
-
-overflow:hidden;
-
-box-shadow:0 0 20px rgba(255,255,255,0.1);
-
-transition:0.4s;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-box-shadow:0 0 30px cyan;
-
-}
-
-.card img{
-
-width:100%;
-height:240px;
-object-fit:cover;
-
-}
-
-.content{
-
-padding:20px;
-color:white;
-
-}
-
-.content h2{
-
-font-size:1.8rem;
-
-margin-bottom:10px;
-
-}
-
-.rating{
-
-color:gold;
-
-margin-bottom:10px;
-
-font-size:1.1rem;
-
-}
-
-.info{
-
-text-align:left;
-
-line-height:1.9;
-
-background:rgba(255,255,255,0.08);
-
-padding:15px;
-
-border-radius:15px;
-
-margin-top:15px;
-
-}
-
-.buttons{
-
-margin-top:20px;
-
-display:flex;
-justify-content:center;
-gap:10px;
-
-flex-wrap:wrap;
-
-}
-
-.buttons button{
-
-padding:10px 18px;
-
-font-size:0.9rem;
-
-}
-
-.footer{
-
-margin-top:40px;
-
-color:white;
-
-opacity:0.7;
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartRecommend AI</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 </head>
-
 <body>
 
-<div class="container">
+<div class="loader" id="loader">
+  <div class="spinner"></div>
+  <h2>Loading SmartRecommend AI...</h2>
+</div>
 
-<h1>🤖 AI Recommendation</h1>
+<canvas id="particles"></canvas>
 
-<p class="subtitle">
+<nav class="navbar">
 
-Choose category and discover amazing recommendations ✨
+  <div class="logo">
+    SmartRecommend AI
+  </div>
 
-</p>
+  <div class="nav-actions">
 
-<div class="top">
+    <button id="themeToggle">
+      🌙
+    </button>
 
-<select id="category">
+  </div>
 
-<option value="">🎯 Select Category</option>
+</nav>
 
-<option value="movies">🎬 Movies</option>
+<section class="hero">
 
-<option value="anime">🔥 Anime</option>
+  <div class="hero-content">
 
-<option value="games">🎮 Games</option>
+    <h1>
+      Discover Perfect Recommendations with AI
+    </h1>
 
-<option value="music">🎵 Music</option>
+    <p>
+      Movies, Anime, Books, Music, Courses, Games & More
+    </p>
 
-<option value="cars">🚗 Cars</option>
+    <div class="search-box">
 
-<option value="food">🍕 Food</option>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search recommendations..."
+      />
 
-<option value="technology">💻 Technology</option>
+      <button id="searchBtn">
+        Search
+      </button>
 
-<option value="travel">✈️ Travel</option>
+    </div>
 
-<option value="fitness">🏋️ Fitness</option>
+  </div>
 
-</select>
+</section>
 
-<button onclick="showRecommendations()">
+<section class="controls">
 
-🚀 Recommend
+  <div class="filters">
 
-</button>
+    <button class="filter-btn active" data-category="all">
+      All
+    </button>
+
+    <button class="filter-btn" data-category="movies">
+      Movies
+    </button>
+
+    <button class="filter-btn" data-category="anime">
+      Anime
+    </button>
+
+    <button class="filter-btn" data-category="books">
+      Books
+    </button>
+
+    <button class="filter-btn" data-category="games">
+      Games
+    </button>
+
+    <button class="filter-btn" data-category="music">
+      Music
+    </button>
+
+  </div>
+
+  <select id="sortSelect">
+
+    <option value="rating">
+      Sort by Rating
+    </option>
+
+    <option value="popularity">
+      Sort by Popularity
+    </option>
+
+  </select>
+
+</section>
+
+<section class="recommendations">
+
+  <h2>
+    Trending Recommendations
+  </h2>
+
+  <div class="cards" id="cardsContainer">
+
+  </div>
+
+</section>
+
+<div class="modal" id="detailModal">
+
+  <div class="modal-content">
+
+    <span class="close-btn" id="closeModal">
+      &times;
+    </span>
+
+    <div class="modal-body" id="modalBody">
+
+    </div>
+
+  </div>
 
 </div>
 
-<div class="result" id="result"></div>
-
-<div class="footer">
-
-✨ Developed By Thanika
-
+<div class="toast" id="toast">
+  Added to Favorites
 </div>
 
-</div>
-
-<script>
-
-function showRecommendations(){
-
-const category =
-document.getElementById("category").value;
-
-const result =
-document.getElementById("result");
-
-let data = [];
-
-if(category === "movies"){
-
-data = [
-
-{
-
-title:"Interstellar",
-
-image:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba",
-
-rating:"⭐⭐⭐⭐⭐ 9.5",
-
-genre:"Sci-Fi",
-
-year:"2014",
-
-creator:"Christopher Nolan",
-
-time:"2h 49m",
-
-desc:"A breathtaking journey through space and time.",
-
-review:"One of the greatest science-fiction movies ever made."
-
-},
-
-{
-
-title:"Avengers Endgame",
-
-image:"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c",
-
-rating:"⭐⭐⭐⭐⭐ 9.2",
-
-genre:"Action",
-
-year:"2019",
-
-creator:"Marvel Studios",
-
-time:"3h 2m",
-
-desc:"Epic superhero battle saving the universe.",
-
-review:"Massive action and emotional ending."
-
-}
-
-];
-
-}
-
-else if(category === "anime"){
-
-data = [
-
-{
-
-title:"Naruto",
-
-image:"https://images.unsplash.com/photo-1541560052-77ec1bbc09f7",
-
-rating:"⭐⭐⭐⭐⭐ 9.4",
-
-genre:"Adventure",
-
-year:"2002",
-
-creator:"Masashi Kishimoto",
-
-time:"720 Episodes",
-
-desc:"Story of a ninja becoming Hokage.",
-
-review:"Inspirational and emotional anime."
-
-},
-
-{
-
-title:"Demon Slayer",
-
-image:"https://images.unsplash.com/photo-1578632767115-351597cf2477",
-
-rating:"⭐⭐⭐⭐⭐ 9.5",
-
-genre:"Action",
-
-year:"2019",
-
-creator:"Ufotable",
-
-time:"44 Episodes",
-
-desc:"Beautiful animation with intense fights.",
-
-review:"Visually stunning anime series."
-
-}
-
-];
-
-}
-
-else if(category === "games"){
-
-data = [
-
-{
-
-title:"GTA V",
-
-image:"https://images.unsplash.com/photo-1511512578047-dfb367046420",
-
-rating:"⭐⭐⭐⭐⭐ 9.7",
-
-genre:"Open World",
-
-year:"2013",
-
-creator:"Rockstar Games",
-
-time:"100+ Hours",
-
-desc:"Massive open-world action game.",
-
-review:"Legendary gameplay and freedom."
-
-},
-
-{
-
-title:"Minecraft",
-
-image:"https://images.unsplash.com/photo-1493711662062-fa541adb3fc8",
-
-rating:"⭐⭐⭐⭐⭐ 9.4",
-
-genre:"Sandbox",
-
-year:"2011",
-
-creator:"Mojang",
-
-time:"Unlimited",
-
-desc:"Creative building and survival game.",
-
-review:"Loved by millions worldwide."
-
-}
-
-];
-
-}
-
-else if(category === "music"){
-
-data = [
-
-{
-
-title:"Believer",
-
-image:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f",
-
-rating:"⭐⭐⭐⭐⭐ 9.3",
-
-genre:"Rock",
-
-year:"2017",
-
-creator:"Imagine Dragons",
-
-time:"3m 24s",
-
-desc:"Powerful motivational song.",
-
-review:"Energetic and inspiring."
-
-},
-
-{
-
-title:"Faded",
-
-image:"https://images.unsplash.com/photo-1511379938547-c1f69419868d",
-
-rating:"⭐⭐⭐⭐⭐ 9.1",
-
-genre:"EDM",
-
-year:"2015",
-
-creator:"Alan Walker",
-
-time:"3m 32s",
-
-desc:"Emotional electronic music masterpiece.",
-
-review:"Beautiful melody and vocals."
-
-}
-
-];
-
-}
-
-else if(category === "cars"){
-
-data = [
-
-{
-
-title:"Lamborghini Aventador",
-
-image:"https://images.unsplash.com/photo-1503376780353-7e6692767b70",
-
-rating:"⭐⭐⭐⭐⭐ 9.8",
-
-genre:"Supercar",
-
-year:"2025",
-
-creator:"Lamborghini",
-
-time:"350 km/h",
-
-desc:"Luxury performance supercar.",
-
-review:"Extremely stylish and powerful."
-
-},
-
-{
-
-title:"Tesla Model S",
-
-image:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7",
-
-rating:"⭐⭐⭐⭐⭐ 9.5",
-
-genre:"Electric",
-
-year:"2025",
-
-creator:"Tesla",
-
-time:"AI Assisted",
-
-desc:"Future electric smart car.",
-
-review:"Modern technology and comfort."
-
-}
-
-];
-
-}
-
-else if(category === "food"){
-
-data = [
-
-{
-
-title:"Pizza",
-
-image:"https://images.unsplash.com/photo-1513104890138-7c749659a591",
-
-rating:"⭐⭐⭐⭐⭐ 9.6",
-
-genre:"Fast Food",
-
-year:"2025",
-
-creator:"Italian Cuisine",
-
-time:"30 Minutes",
-
-desc:"Cheesy delicious pizza loved worldwide.",
-
-review:"One of the most popular foods."
-
-},
-
-{
-
-title:"Burger",
-
-image:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
-
-rating:"⭐⭐⭐⭐⭐ 9.3",
-
-genre:"Snacks",
-
-year:"2025",
-
-creator:"American Cuisine",
-
-time:"20 Minutes",
-
-desc:"Juicy burger with crispy fries.",
-
-review:"Perfect comfort food."
-
-}
-
-];
-
-}
-
-else if(category === "technology"){
-
-data = [
-
-{
-
-title:"Artificial Intelligence",
-
-image:"https://images.unsplash.com/photo-1485827404703-89b55fcc595e",
-
-rating:"⭐⭐⭐⭐⭐ 9.9",
-
-genre:"AI",
-
-year:"2025",
-
-creator:"Future Tech",
-
-time:"Infinite Growth",
-
-desc:"Future-changing AI technology.",
-
-review:"Revolutionizing industries worldwide."
-
-},
-
-{
-
-title:"Cyber Security",
-
-image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3",
-
-rating:"⭐⭐⭐⭐⭐ 9.4",
-
-genre:"Security",
-
-year:"2025",
-
-creator:"Cyber Experts",
-
-time:"24/7",
-
-desc:"Protecting systems and data.",
-
-review:"Critical for digital safety."
-
-}
-
-];
-
-}
-
-else if(category === "travel"){
-
-data = [
-
-{
-
-title:"Maldives",
-
-image:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-
-rating:"⭐⭐⭐⭐⭐ 9.8",
-
-genre:"Beach",
-
-year:"2025",
-
-creator:"Nature",
-
-time:"Vacation",
-
-desc:"Beautiful tropical paradise.",
-
-review:"Crystal-clear water and luxury resorts."
-
-},
-
-{
-
-title:"Switzerland",
-
-image:"https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-
-rating:"⭐⭐⭐⭐⭐ 9.7",
-
-genre:"Mountains",
-
-year:"2025",
-
-creator:"Europe",
-
-time:"Holiday",
-
-desc:"Snow mountains and scenic beauty.",
-
-review:"Perfect peaceful destination."
-
-}
-
-];
-
-}
-
-else if(category === "fitness"){
-
-data = [
-
-{
-
-title:"Gym Workout",
-
-image:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
-
-rating:"⭐⭐⭐⭐⭐ 9.7",
-
-genre:"Fitness",
-
-year:"2025",
-
-creator:"AI Fitness",
-
-time:"1 Hour",
-
-desc:"Best workout routine for full body strength.",
-
-review:"Highly recommended by fitness trainers."
-
-},
-
-{
-
-title:"Yoga Training",
-
-image:"https://images.unsplash.com/photo-1506126613408-eca07ce68773",
-
-rating:"⭐⭐⭐⭐⭐ 9.4",
-
-genre:"Wellness",
-
-year:"2025",
-
-creator:"Yoga Master",
-
-time:"45 Minutes",
-
-desc:"Relaxing yoga exercises for mental peace.",
-
-review:"Improves flexibility and concentration."
-
-}
-
-];
-
-}
-
-else{
-
-result.innerHTML =
-
-"<h2 style='color:white;'>⚠️ Please Select Category</h2>";
-
-return;
-
-}
-
-let output = "";
-
-data.forEach(item=>{
-
-output += `
-
-<div class="card">
-
-<img src="${item.image}">
-
-<div class="content">
-
-<h2>${item.title}</h2>
-
-<div class="rating">
-${item.rating}
-</div>
-
-<p>${item.desc}</p>
-
-<div class="info">
-
-<p>🎭 Genre: ${item.genre}</p>
-
-<p>📅 Release Year: ${item.year}</p>
-
-<p>🎬 Creator: ${item.creator}</p>
-
-<p>⏱ Duration: ${item.time}</p>
-
-<p>🌍 Availability: Worldwide</p>
-
-<p>🔥 Trending Score: 98%</p>
-
-<p>💡 Review: ${item.review}</p>
-
-<p>⭐ AI Recommended because users love this category.</p>
-
-</div>
-
-<div class="buttons">
-
-<button onclick="
-alert('Opening ${item.title}')
-">
-
-⭐ Explore
-
-</button>
-
-<button onclick="
-alert('${item.title} saved ❤️')
-">
-
-❤️ Save
-
-</button>
-
-<button onclick="
-alert('Sharing ${item.title}')
-">
-
-📤 Share
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-result.innerHTML = output;
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
